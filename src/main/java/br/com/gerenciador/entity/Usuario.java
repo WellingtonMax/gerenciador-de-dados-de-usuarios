@@ -3,36 +3,39 @@ package br.com.gerenciador.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "id_usuario")
+	private Long idUsuario;
 
-	@Column(name = "nome")
+	@Column(nullable = false)
 	private String nome;
 
-	@Column(name = "email")
+	@Column(nullable = false)
 	private String email;
 
-	@Column(name = "cpf")
+	@Column(nullable = false)
 	private String cpf;
 
-	@Column(name = "data_de_nascimento")
+	@Column(name = "data_de_nascimento", nullable = false)
 	private LocalDate dataDeNascimento;
 	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private List<Endereco> enderecos;
 	
 	public Usuario(Long id, String nome, String email, String cpf, LocalDate dataDeNascimento) {
-		this.id = id;
+		this.idUsuario = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
@@ -52,11 +55,11 @@ public class Usuario {
 	}
 
 	public Long getId() {
-		return id;
+		return idUsuario;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idUsuario = id;
 	}
 
 	public String getNome() {

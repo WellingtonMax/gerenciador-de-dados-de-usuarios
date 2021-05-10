@@ -9,38 +9,41 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Endereco {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "id_endereco")
+	private Long idEndereco;
 
-	@Column(name = "numero")
+	@Column(nullable = false)
 	private String numero;
 
 	@Column(name = "complemento")
 	private String complemento;
 
-	@Column(name = "bairro")
+	@Column(nullable = false)
 	private String bairro;
 
-	@Column(name = "estado")
+	@Column(nullable = false)
 	private String estado;
 
-	@Column(name = "cep")
+	@Column(nullable = false)
 	private String cep;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
+	@JsonIgnore
 	private Usuario usuario;
 
 	@Column(name = "id_usuario")
 	private Long idUsuario;
 		
 	public Endereco(Long id, String numero, String complemento, String bairro, String estado, String cep) {
-		this.id = id;
+		this.idEndereco = id;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
@@ -61,11 +64,11 @@ public class Endereco {
 	}
 
 	public Long getId() {
-		return id;
+		return idEndereco;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idEndereco = id;
 	}
 
 	public String getNumero() {
