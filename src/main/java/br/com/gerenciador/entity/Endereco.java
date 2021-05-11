@@ -20,6 +20,9 @@ public class Endereco {
 	private Long idEndereco;
 
 	@Column(nullable = false)
+	private String logradouro;
+
+	@Column(nullable = false)
 	private String numero;
 
 	@Column(name = "complemento")
@@ -33,9 +36,7 @@ public class Endereco {
 
 	@Column(nullable = false)
 	private String cep;
-	
-	//TODO adicionar logradouro
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
 	@JsonIgnore
@@ -43,7 +44,7 @@ public class Endereco {
 
 	@Column(name = "id_usuario")
 	private Long idUsuario;
-		
+
 	public Endereco(Long id, String numero, String complemento, String bairro, String estado, String cep) {
 		this.idEndereco = id;
 		this.numero = numero;
@@ -129,5 +130,12 @@ public class Endereco {
 		this.idUsuario = idUsuario;
 	}
 
-	
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
 }

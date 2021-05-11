@@ -3,6 +3,8 @@ package br.com.gerenciador.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +23,13 @@ public class UsuarioController {
 	UsuarioService usuarioService;
 
 	@GetMapping("/{id}")
-	public Optional<Usuario> buscaUsuarioPorId(@PathVariable Long id) {
-		return this.usuarioService.buscaUsuario(id);
+	public ResponseEntity<Optional<Usuario>> buscaUsuarioPorId(@PathVariable Long id) throws Exception {
+		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscaUsuario(id));
 	}
 
 	@PostMapping
-	public Usuario insereUsuario(@RequestBody Usuario usuario) {
-		return this.usuarioService.criaUsuario(usuario);
+	public ResponseEntity<Usuario> insereUsuario(@RequestBody Usuario usuario) throws Exception {
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criaUsuario(usuario));
 	}
 
 }

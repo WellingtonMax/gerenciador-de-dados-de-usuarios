@@ -6,8 +6,8 @@ import br.com.gerenciador.entity.Usuario;
 
 public interface UsuarioService {
 	
-	Usuario criaUsuario(Usuario usuario);
+	Usuario criaUsuario(Usuario usuario) throws Exception;
 	
-	Optional<Usuario> buscaUsuario(Long id);
+	Optional<Usuario> buscaUsuario(Long id) throws Exception;
 	
 }
