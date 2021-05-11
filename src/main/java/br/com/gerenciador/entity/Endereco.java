@@ -34,6 +34,8 @@ public class Endereco {
 	@Column(nullable = false)
 	private String cep;
 	
+	//TODO adicionar logradouro
+	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
 	@JsonIgnore
