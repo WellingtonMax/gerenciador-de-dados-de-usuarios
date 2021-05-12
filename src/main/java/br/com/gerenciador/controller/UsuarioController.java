@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gerenciador.entity.Usuario;
-import br.com.gerenciador.service.UsuarioService;
+import br.com.gerenciador.service.interfaces.UsuarioService;
 
 @RestController
 @RequestMapping("/gerenciador")
@@ -31,5 +31,6 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> insereUsuario(@RequestBody Usuario usuario) throws Exception {
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criaUsuario(usuario));
 	}
+	
 
 }

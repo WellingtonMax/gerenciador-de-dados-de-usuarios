@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gerenciador.entity.Endereco;
-import br.com.gerenciador.service.EnderecoService;
+import br.com.gerenciador.service.interfaces.EnderecoService;
 
 @RestController
 @RequestMapping("/adicao")

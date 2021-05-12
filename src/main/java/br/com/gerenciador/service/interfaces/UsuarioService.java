@@ -1,4 +1,4 @@
-package br.com.gerenciador.service;
+package br.com.gerenciador.service.interfaces;
 
 import java.util.Optional;
 

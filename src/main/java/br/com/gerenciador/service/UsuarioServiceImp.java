@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.gerenciador.entity.Usuario;
 import br.com.gerenciador.repository.UsuarioRepository;
+import br.com.gerenciador.service.interfaces.UsuarioService;
 
 @Service
 public class UsuarioServiceImp implements UsuarioService {
@@ -29,18 +30,14 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public Optional<Usuario> buscaUsuario(Long id) throws Exception {
-
-		if (this.verificaUsuario(id)) {
-
-			return usuarioRepository.findById(id);
-
-		}
-		if (!verificaUsuario(id)) {
+		Optional<Usuario> usuarioBuscado = usuarioRepository.findById(id);
+		if (!usuarioBuscado.isPresent()) {
 
 			throw new Exception(MENSAGEMUSUARIO);
 
 		}
-		return usuarioRepository.findById(id);
+		return usuarioBuscado;
+
 	}
 
 	public boolean verificaSeUsuarioExiste(String cpf, String email) {
@@ -49,14 +46,6 @@ public class UsuarioServiceImp implements UsuarioService {
 			return true;
 		}
 
-		return false;
-	}
-
-	public boolean verificaUsuario(Long id) {
-		Optional<Usuario> usuarioBuscado = usuarioRepository.findById(id);
-		if (usuarioBuscado != null) {
-			return true;
-		}
 		return false;
 	}
 }

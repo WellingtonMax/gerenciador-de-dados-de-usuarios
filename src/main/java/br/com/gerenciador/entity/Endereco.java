@@ -31,8 +31,8 @@ public class Endereco {
 	@Column(nullable = false)
 	private String bairro;
 
-	@Column(nullable = false)
-	private String estado;
+	@Column(name = "uf", nullable = false)
+	private String uf;
 
 	@Column(nullable = false)
 	private String cep;
@@ -45,20 +45,20 @@ public class Endereco {
 	@Column(name = "id_usuario")
 	private Long idUsuario;
 
-	public Endereco(Long id, String numero, String complemento, String bairro, String estado, String cep) {
+	public Endereco(Long id, String numero, String complemento, String bairro, String uf, String cep) {
 		this.idEndereco = id;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
-		this.estado = estado;
+		this.uf = uf;
 		this.cep = cep;
 	}
 
-	public Endereco(String numero, String complemento, String bairro, String estado, String cep) {
+	public Endereco(String numero, String complemento, String bairro, String uf, String cep) {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
-		this.estado = estado;
+		this.uf = uf;
 		this.cep = cep;
 	}
 
@@ -98,12 +98,12 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	public String getCep() {

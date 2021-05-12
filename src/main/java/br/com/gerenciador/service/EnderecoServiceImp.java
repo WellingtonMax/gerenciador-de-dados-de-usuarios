@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.gerenciador.entity.Endereco;
 import br.com.gerenciador.repository.EnderecoRepository;
+import br.com.gerenciador.service.interfaces.EnderecoService;
 
 @Service
 public class EnderecoServiceImp implements EnderecoService {
