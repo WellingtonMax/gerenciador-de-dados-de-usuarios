@@ -4,12 +4,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.com.gerenciador.entity.Endereco;
+import br.com.gerenciador.dto.EnderecoResponse;
 
 @FeignClient(url= "https://viacep.com.br/ws/" , name = "viacep")
 public interface ViaCep {
 	
 	@GetMapping("{cep}/json")
-    Endereco buscaEnderecoPorCep(@PathVariable("cep") String cep);
+    EnderecoResponse buscaEnderecoPorCep(@PathVariable("cep") String cep);
 
 }
